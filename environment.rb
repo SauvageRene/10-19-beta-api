@@ -6,5 +6,3 @@ Bundler.require #require all gems listed in gem file
 require_relative './lib/api.rb'
 require_relative './lib/cli.rb'
 require_relative './lib/brewery.rb'
-require 'rest-client'
-require 'json'

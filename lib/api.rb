@@ -7,7 +7,7 @@ class API
         breweries_array = JSON.parse(response)
         breweries_array.each do |brewery|
             Brewery.new(brewery)
-            binding.pry
+    
         end
     end
 

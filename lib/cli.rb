@@ -4,9 +4,11 @@ class Cli
 
 
     def start
-        puts "Welcome BrewMasters "
-        puts "Are you looking for some brew? Find your next visit, enter 'breweries'"
-        puts "if you aren't looking for brew, enter 'exit'"
+        puts "Welcome BrewMasters to the Illinois brew finder "
+        puts ""
+        puts "Are you looking for some brew? Find your next visit here, type 'breweries'"
+        puts ""
+        puts "if you aren't looking for brew, how'd you even get here? type 'exit'"
         API.get_breweries
         menu
     end
@@ -14,8 +16,8 @@ class Cli
     def menu
         input = gets.strip.downcase
 
-        if input == "list"
-            puts "list"
+        if input == "breweries"
+            breweries_list
         elsif input == "exit"
             goodbye
         else 
@@ -24,12 +26,13 @@ class Cli
     end
 
     def breweries_list
-        Brewery.all.each_with_index(1) do |brewery, index|
+        Brewery.all.each_with_index do |brewery, index|
             puts "#{index + 1}. #{brewery.name}"
         end
-        
+        puts ""
+        puts ""
         puts "which brewery would you like details about:"
-        input = gets.strip.capitalize
+        input = gets.strip.downcase
 
         breweries_selection(input)
     end
@@ -39,7 +42,11 @@ class Cli
         brewplace.each do |s|
             puts "Name: #{s.name}"
             puts "Brewery_type: #{s.brewery_type}"
+            puts "Street: #{s.street}"
             puts "City: #{s.city}"
+            puts "Website: #{s.website_url}"
+            puts "Phone: #{s.phone}"
+
         end
     end
 
@@ -57,5 +64,5 @@ class Cli
 
 end
 
-cli = Cli.new
-cli.start
+# cli = Cli.new
+# cli.start
