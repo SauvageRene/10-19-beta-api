@@ -1,12 +1,16 @@
-
+require 'pry'
 class API
+    
 
-    def fetch_breweries
-        uri = URI("https://api.openbrewerydb.org/breweries")
-        breweries = JSON.parse(Net::HTTP.get(uri))
-        breweries["name"][1..15]
-
+    def self.get_breweries
+        response = RestClient.get("https://api.openbrewerydb.org/breweries?by_state=Illinois")
+        breweries_array = JSON.parse(response)
+        breweries_array.each do |brewery|
+            Brewery.new(brewery)
+            binding.pry
+        end
     end
+
 end
 
-api = API.new
+#api = API.new

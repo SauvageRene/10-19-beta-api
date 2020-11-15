@@ -4,5 +4,7 @@ source "https://rubygems.org/"
 gem 'pry'
 gem 'json'
 gem 'net-http'
-require "open-uri"
+gem 'rest-client'
+gem 'httparty'
+
 
