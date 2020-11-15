@@ -80,7 +80,8 @@ class Cli
         elsif input == "2"
             goodbye
         else
-            invalid_entry
+            puts "invalid entry, try again"
+            another_brewery?
         end
     end
 
