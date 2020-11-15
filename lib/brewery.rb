@@ -17,10 +17,7 @@ class Brewery
     def save
         @@all << self
     end
-
-    def create_lists
-    end
-
+    
     def self.all
         @@all
     end

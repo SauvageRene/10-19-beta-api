@@ -1,3 +1,4 @@
+require 'pry'
 class Cli
 
     attr_accessor
@@ -11,6 +12,8 @@ class Cli
         puts "if you aren't looking for brew, how'd you even get here? type 'exit'"
         API.get_breweries
         menu
+        puts ""
+        self.another_brewery?
     end
 
     def menu
@@ -59,6 +62,26 @@ class Cli
 
     def goodbye
         puts "I've been told I make a very good brew, Goodbye"
+    end
+    
+    def input_to_index(input)
+        input.to_i - 1
+    end
+
+    def another_brewery?
+        puts "Would you like details on another brewery?"
+        puts "1. Yes"
+        puts "2. No"
+        input = gets.chomp
+        index = input_to_index(input)
+
+        if input == "1"
+            breweries_list
+        elsif input == "2"
+            goodbye
+        else
+            invalid_entry
+        end
     end
 
 
