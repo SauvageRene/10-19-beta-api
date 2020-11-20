@@ -4,8 +4,7 @@ class Brewery
     attr_accessor :name, :brewery_type, :city, :website_url, :phone, :street
 
     @@all = []
-    @@brewery_type = []
-    @@city = []
+    
 
     def initialize(attr_hash)
        attr_hash.each do |k, v |
@@ -24,7 +23,7 @@ class Brewery
     
     def self.find_by_name(name)
         self.all.select do |brewery|
-            brewery.name.downcase == name
+            brewery.name.downcase == name.downcase
         end
     end
 

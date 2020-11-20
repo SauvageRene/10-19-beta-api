@@ -1,7 +1,4 @@
-require 'pry'
 class Cli
-
-    attr_accessor
 
 
     def start
@@ -36,12 +33,12 @@ class Cli
         puts ""
         puts "which brewery would you like details about:"
         input = gets.strip.downcase
-
-        breweries_selection(input)
+        index = input_to_index(input)
+        breweries_selection(index)
     end
     
-    def breweries_selection(brewery)
-        brewplace = Brewery.find_by_name(brewery)
+    def breweries_selection(index)
+        brewplace = Brewery.all[index]
         brewplace.each do |s|
             puts "Name: #{s.name}"
             puts "Brewery_type: #{s.brewery_type}"
