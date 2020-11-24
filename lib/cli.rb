@@ -10,7 +10,7 @@ class Cli
         API.get_breweries
         menu
         puts ""
-        self.another_brewery?
+        #self.another_brewery?
     end
 
     def menu
@@ -30,24 +30,35 @@ class Cli
             puts "#{index + 1}. #{brewery.name}"
         end
         puts ""
+        ask_user_input
+    end
+
+    def ask_user_input
         puts ""
         puts "which brewery would you like details about:"
         input = gets.strip.downcase
         index = input_to_index(input)
-        breweries_selection(index)
+        #Checking if user types a number between 1-20 
+        if index.between?(0,Brewery.all.size-1) #0..19
+            display_breweries_selection(index)
+        else
+            puts "Invalid Entry"
+            ask_user_input
+        end
+
     end
     
-    def breweries_selection(index)
+    def display_breweries_selection(index)
+        # Choose a brewery represented by the number 
         brewplace = Brewery.all[index]
-        brewplace.each do |s|
-            puts "Name: #{s.name}"
-            puts "Brewery_type: #{s.brewery_type}"
-            puts "Street: #{s.street}"
-            puts "City: #{s.city}"
-            puts "Website: #{s.website_url}"
-            puts "Phone: #{s.phone}"
 
-        end
+        puts "Name: #{brewplace.name}"
+        puts "Brewery_type: #{brewplace.brewery_type}"
+        puts "Street: #{brewplace.street}"
+        puts "City: #{brewplace.city}"
+        puts "Website: #{brewplace.website_url}"
+        puts "Phone: #{brewplace.phone}"
+        another_brewery?
     end
 
         #go over my brewery array, find method to find the brewery
