@@ -42,7 +42,7 @@ class Cli
         if index.between?(0,Brewery.all.size-1) #0..19
             display_breweries_selection(index)
         else
-            puts "Invalid Entry"
+            puts "Invalid entry, try again"
             ask_user_input
         end
 
